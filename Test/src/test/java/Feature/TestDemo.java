@@ -6,9 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import javax.lang.model.element.Element;
-import java.util.List;
-
 public class TestDemo {
     private WebDriver driver;
     private RequestDemoPageUI requestDemoPageUI;

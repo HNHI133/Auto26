@@ -1,10 +1,4 @@
-package Day5;
-import UI.RequestDemoPageUI;
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+package Feature.Day5;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,11 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import untils.ExcelUtils;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

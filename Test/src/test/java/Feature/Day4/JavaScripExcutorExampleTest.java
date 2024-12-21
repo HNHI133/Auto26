@@ -1,4 +1,4 @@
-package Day4;
+package Feature.Day4;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
