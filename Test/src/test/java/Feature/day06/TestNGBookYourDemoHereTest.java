@@ -96,27 +96,22 @@ public class TestNGBookYourDemoHereTest {
 
     @Test
     public void testSubmitWithoutLastName() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.findElement(By.id("Email")).sendKeys("test@example.com");
+        driver.findElement(By.id("FirstName")).sendKeys("John");
+        driver.findElement(By.id("Company")).sendKeys("Test Company");
+        driver.findElement(By.id("Phone")).sendKeys("123456789");
 
-        try {
-            // Đợi đến khi trường "FirstName" xuất hiện
-            WebElement firstNameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#FirstName")));
+        WebElement countryDropdownList = driver.findElement(By.id("Country"));
+        new Select(countryDropdownList).selectByVisibleText("United States");
 
-            // Điền dữ liệu vào trường "FirstName"
-            firstNameField.sendKeys("Test");
+        WebElement interestDropdownList = driver.findElement(By.id("Solution_Interest__c"));
+        new Select(interestDropdownList).selectByVisibleText("Sales");
 
-            // Tìm và bấm vào nút Submit
-            WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("SubmitButton")));
-            submitButton.click();
+        driver.findElement(By.id("LblmktoCheckbox_44280_0")).click();
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
 
-            // Thêm xác nhận (assert) kiểm tra kết quả mong muốn
-            WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("LastNameError")));
-            String errorMessage = errorElement.getText();
-            Assert.assertEquals(errorMessage, "Last Name is required.", "Lỗi không hiển thị đúng!");
-        } catch (Exception e) {
-            e.printStackTrace();
-            Assert.fail("Test thất bại do lỗi: " + e.getMessage());
-        }
+        WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Last Name is required')]")));
+        Assert.assertTrue(errorMessage.isDisplayed(), "Error message for missing Last Name is not displayed.");
     }
 
     @AfterTest
